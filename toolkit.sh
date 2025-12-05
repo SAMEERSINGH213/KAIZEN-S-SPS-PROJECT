@@ -112,4 +112,24 @@ if [ "$choice" = "5" ]; then
         echo "Emails extracted!"
         echo "Emails extracted from $in" >> logs.txt
     fi
+    if [ "$choice" = "9" ]; then
+        read -p "Enter input file: " in
+
+        tr ' ' '\n' < "$in" | sort | uniq -c | sort -nr
+
+        echo "Word frequency displayed!"
+        echo "Word frequency checked for $in" >> logs.txt
+    fi
+
+    if [ "$choice" = "10" ]; then
+        read -p "Enter input file: " in
+        read -p "Word to replace: " w1
+        read -p "Replace with: " w2
+        read -p "Output file: " out
+
+        sed "s/$w1/$w2/g" "$in" > "$out"
+
+        echo "Word replaced!"
+        echo "Replaced '$w1' with '$w2' in $in" >> logs.txt
+    fi
     done
