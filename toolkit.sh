@@ -45,7 +45,7 @@ if [ "$choice" = "1" ]; then
         echo "Duplicates removed & sorted!"
         echo "Removed duplicates in $in" >> logs.txt
     fi
-done
+
 
 if [ "$choice" = "3" ]; then
         read -p "Enter input file: " in
@@ -93,3 +93,23 @@ if [ "$choice" = "5" ]; then
 
         echo "Viewed statistics for $in" >> logs.txt
     fi
+    if [ "$choice" = "7" ]; then
+        read -p "Enter input file: " in
+        read -p "Enter output file: " out
+
+        grep -o '[0-9]\+' "$in" > "$out"
+
+        echo "Numbers extracted!"
+        echo "Extracted numbers from $in" >> logs.txt
+    fi
+
+    if [ "$choice" = "8" ]; then
+        read -p "Enter input file: " in
+        read -p "Enter output file: " out
+
+        grep -Eo '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+' "$in" > "$out"
+
+        echo "Emails extracted!"
+        echo "Emails extracted from $in" >> logs.txt
+    fi
+    done
